@@ -13,7 +13,7 @@ export function TestimonialsSection() {
   const testimonials = [
     {
       id: 1,
-      name: "Saulo Araujo",
+      name: "Hugo",
       image: "/testimonial-1.jpg",
       rating: 5,
       comment: "Recebi sim, produto chegou certinho! Muito satisfeito com a qualidade do patch.",
@@ -21,7 +21,7 @@ export function TestimonialsSection() {
     },
     {
       id: 2,
-      name: "Vinicius",
+      name: "Wendel",
       image: "/testimonial-2.jpg",
       rating: 5,
       comment: "Chegou perfeitamente! Suporte excelente, recomendo demais.",
@@ -29,7 +29,7 @@ export function TestimonialsSection() {
     },
     {
       id: 3,
-      name: "Vini Fabris",
+      name: "Wesley",
       image: "/testimonial-3.jpg",
       rating: 5,
       comment: "Instalação super fácil com as instruções. Patch funcionando perfeitamente!",
@@ -37,7 +37,7 @@ export function TestimonialsSection() {
     },
     {
       id: 4,
-      name: "Felipe",
+      name: "Samuel",
       image: "/testimonial-4.jpg",
       rating: 5,
       comment: "Suporte incrível! Me ajudaram com tudo, muito obrigado pela paciência.",
