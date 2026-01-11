@@ -247,13 +247,7 @@ export default function Home() {
                     </div>
 
                     <div className="mb-4 md:mb-6 p-3 md:p-4 bg-gradient-to-r from-green-600/20 to-emerald-600/20 rounded-lg border border-green-500/30">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Badge className="bg-green-600 text-white text-xs md:text-sm">PIX</Badge>
-                        <span className="text-green-400 font-bold text-sm md:text-base">5% de desconto adicional</span>
-                      </div>
-                      <p className="text-white/90 text-xs md:text-sm">
-                        Use o cupom <span className="font-bold text-green-400">NATALWG</span> no pagamento via PIX
-                      </p>
+
                     </div>
 
                     <Button

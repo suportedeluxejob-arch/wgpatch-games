@@ -60,11 +60,7 @@ export function TestimonialsSection() {
       <section className="py-16 bg-gradient-to-br from-slate-50 to-blue-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <Badge className="mb-4 bg-green-100 text-green-800 hover:bg-green-200">
-              <MessageCircle className="w-4 h-4 mr-2" />
-              Depoimentos Reais
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Clientes Satisfeitos</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Feedbacks de Clientes Satisfeitos</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Veja o que nossos clientes estão falando sobre nossos patches
             </p>
@@ -88,8 +84,6 @@ export function TestimonialsSection() {
                       </div>
                     </div>
                   </div>
-
-                  <p className="text-gray-600 text-sm mb-4 italic">"{testimonial.comment}"</p>
 
                   <div
                     className="relative h-64 rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
