@@ -57,13 +57,6 @@ export default function Home() {
             <Button
               asChild
               size="lg"
-              className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all duration-300 h-12 sm:h-14"
-            >
-              <Link href="#products">Ver Produtos</Link>
-            </Button>
-            <Button
-              asChild
-              size="lg"
               variant="outline"
               className="border-white/20 text-white hover:bg-white/10 bg-transparent hover:border-white/40 font-bold h-12 sm:h-14"
             >
