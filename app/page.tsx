@@ -7,6 +7,7 @@ import { Download, Zap, Users, Trophy, Check, Shield, Star } from "lucide-react"
 import { Footer } from "@/components/footer"
 import { PaymentMethodModal } from "@/components/payment-method-modal"
 import { CountdownTimer } from "@/components/countdown-timer"
+import { HeroCarousel } from "@/components/hero-carousel"
 import { useState } from "react"
 import Link from "next/link"
 import { TestimonialsSection } from "@/components/testimonials-section"
@@ -32,28 +33,43 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-blue-900 to-cyan-900">
+      {/* Hero Carousel */}
+      <HeroCarousel />
+
       {/* Hero Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <Badge className="mb-6 bg-cyan-600/20 text-cyan-300 border-cyan-500/30">🎮 Patches Completos</Badge>
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+      <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto w-full text-center animate-fade-in">
+          <Badge className="mb-4 sm:mb-6 bg-cyan-600/20 text-cyan-300 border-cyan-500/30 inline-block text-sm sm:text-base px-3 sm:px-4 py-2 sm:py-2.5">
+            🎮 Patches Completos
+          </Badge>
+          
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight animate-slide-up">
             Leve sua experiência no
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
+            <span className="block sm:inline text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
               {" "}
               futebol virtual{" "}
             </span>
             a outro nível
           </h1>
-          <p className="text-xl text-white/80 mb-8 max-w-3xl mx-auto leading-relaxed">
+          
+          <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8 sm:mb-10 max-w-3xl mx-auto leading-relaxed">
             Com o WG Patch Futebol, o patch mais completo e realista do mercado! Times brasileiros clássicos, jogadores
             lendários, ligas licenciadas e instalação remota.
           </p>
-          <div className="flex flex-col sm:flex-row-row-4 justify-center">
+          
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+            <Button
+              asChild
+              size="lg"
+              className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all duration-300 h-12 sm:h-14"
+            >
+              <Link href="#products">Ver Produtos</Link>
+            </Button>
             <Button
               asChild
               size="lg"
               variant="outline"
-              className="border-white/20 text-white hover:bg-white/10 bg-transparent"
+              className="border-white/20 text-white hover:bg-white/10 bg-transparent hover:border-white/40 font-bold h-12 sm:h-14"
             >
               <Link href="/demonstracao">Ver Demonstração</Link>
             </Button>
