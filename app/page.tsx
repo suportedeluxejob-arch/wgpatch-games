@@ -7,7 +7,6 @@ import { Download, Zap, Users, Trophy, Check, Shield, Star } from "lucide-react"
 import { Footer } from "@/components/footer"
 import { PaymentMethodModal } from "@/components/payment-method-modal"
 import { CountdownTimer } from "@/components/countdown-timer"
-import { HeroCarousel } from "@/components/hero-carousel"
 import { useState } from "react"
 import Link from "next/link"
 import { TestimonialsSection } from "@/components/testimonials-section"
@@ -33,9 +32,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-blue-900 to-cyan-900">
-      {/* Hero Carousel */}
-      <HeroCarousel />
-
       {/* Hero Section */}
       <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto w-full text-center animate-fade-in">
@@ -313,7 +309,7 @@ export default function Home() {
               <div className="p-6">
                 <Badge className="mb-3 bg-cyan-600/20 text-cyan-300 border-cyan-500/30 w-fit">Pacote Completo</Badge>
                 <div className="mb-3">
-                  <CountdownTimer minutes={5} />
+                  <CountdownTimer hours={0.083} />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">PATCH EAFC 26 + JOGO EAFC 26</h3>
                 <p className="text-white/70 mb-4">
