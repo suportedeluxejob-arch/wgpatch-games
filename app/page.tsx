@@ -11,6 +11,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { ContactSection } from "@/components/contact-section"
+import { Logo } from "@/components/logo"
 
 export default function Home() {
   const [paymentModal, setPaymentModal] = useState({
@@ -32,6 +33,15 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-blue-900 to-cyan-900">
+      {/* Logo Section - Para alterar a logo, modifique o parâmetro imageUrl abaixo */}
+      <section className="pt-20 pb-8 px-4 sm:px-6 lg:px-8">
+        <Logo 
+          imageUrl="https://iili.io/fv4Ka0G.jpg" // Altere aqui: use "/caminho/local.png" ou "https://url-externa.com/logo.png"
+          size={120} // Tamanho em pixels (largura e altura)
+          alt="WG Patch Logo"
+        />
+      </section>
+
       {/* Hero Section */}
       <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto w-full text-center animate-fade-in">
