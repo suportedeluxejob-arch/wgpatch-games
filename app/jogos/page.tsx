@@ -8,7 +8,7 @@ import { Footer } from "@/components/footer"
 import { PaymentMethodModal } from "@/components/payment-method-modal"
 import { useState } from "react"
 import Link from "next/link"
-import { getPaymentLinks } from "@/lib/payment-links"
+import { getPaymentLinks, getPaymentLinksWithRotation } from "@/lib/payment-links"
 
 export default function JogosPage() {
   const [paymentModal, setPaymentModal] = useState({
@@ -142,8 +142,8 @@ export default function JogosPage() {
                     {game.originalPrice && <div className="text-white/60 line-through">{game.originalPrice}</div>}
                   </div>
                   <Button
-                    onClick={() => {
-                      const links = getPaymentLinks(game.name)
+                    onClick={async () => {
+                      const links = await getPaymentLinksWithRotation(game.name)
                       openPaymentModal(links.pix, links.card, game.name)
                     }}
                     className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"

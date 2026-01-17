@@ -8,7 +8,7 @@ import { Footer } from "@/components/footer"
 import { CountdownTimer } from "@/components/countdown-timer"
 import { PaymentMethodModal } from "@/components/payment-method-modal"
 import { useState } from "react"
-import { getPaymentLinks } from "@/lib/payment-links"
+import { getPaymentLinks, getPaymentLinksWithRotation } from "@/lib/payment-links"
 
 export default function PS5Page() {
   const [paymentModal, setPaymentModal] = useState({
@@ -251,8 +251,8 @@ export default function PS5Page() {
                   </ul>
                   <div className="flex gap-2">
                     <Button
-                      onClick={() => {
-                        const links = getPaymentLinks(product.name)
+                      onClick={async () => {
+                        const links = await getPaymentLinksWithRotation(product.name)
                         openPaymentModal(links.pix, links.card, product.name)
                       }}
                       className="flex-1 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"

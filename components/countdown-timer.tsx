@@ -4,12 +4,13 @@ import { useState, useEffect } from "react"
 
 interface CountdownTimerProps {
   hours?: number
+  minutes?: number
 }
 
-export function CountdownTimer({ hours = 10 }: CountdownTimerProps) {
+export function CountdownTimer({ hours = 10, minutes = 0 }: CountdownTimerProps) {
   const [timeLeft, setTimeLeft] = useState({
     hours: hours,
-    minutes: 0,
+    minutes: minutes,
     seconds: 0,
   })
 

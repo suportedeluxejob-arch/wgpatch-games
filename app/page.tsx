@@ -12,7 +12,7 @@ import Link from "next/link"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { ContactSection } from "@/components/contact-section"
 import { Logo } from "@/components/logo"
-import { getPaymentLinks } from "@/lib/payment-links"
+import { getPaymentLinks, getPaymentLinksWithRotation } from "@/lib/payment-links"
 
 export default function Home() {
   const [paymentModal, setPaymentModal] = useState({
@@ -260,15 +260,15 @@ export default function Home() {
                     </div>
 
                     <Button
-                      onClick={() =>
+                      onClick={async () => {
+                        const links = await getPaymentLinksWithRotation("EAFC 26 Bundle")
+                        const selectedLink = selectedLicense === "secundaria" ? links.pix : links.card
                         openPaymentModal(
-                          selectedLicense === "secundaria"
-                            ? "https://go.invictuspay.app.br/p9z3m78rwl"
-                            : "https://go.invictuspay.app.br/ywfgl87azm",
-                          "", // Credit card link - to be added
+                          selectedLink,
+                          "",
                           `EA Sports FC 26 - Mídia Digital (${selectedLicense === "secundaria" ? "Licença Secundária" : "Licença Primária"})`,
                         )
-                      }
+                      }}
                       className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-cyan-600 hover:from-purple-700 hover:via-pink-700 hover:to-cyan-700 text-white font-bold text-base md:text-lg py-4 md:py-6 shadow-lg shadow-purple-500/50 hover:shadow-purple-500/70 transition-all"
                     >
                       <Download className="mr-2 h-4 w-4 md:h-5 md:w-5" />
@@ -317,8 +317,8 @@ export default function Home() {
                   <div className="text-white/60 line-through">R$ 199,90</div>
                 </div>
                 <Button
-                  onClick={() => {
-                    const links = getPaymentLinks("PATCH EAFC 26 + JOGO EAFC 26")
+                  onClick={async () => {
+                    const links = await getPaymentLinksWithRotation("PATCH EAFC 26 + JOGO EAFC 26")
                     openPaymentModal(links.pix, links.card, "PATCH EAFC 26 + JOGO EAFC 26")
                   }}
                   className="w-full bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700"
@@ -351,8 +351,8 @@ export default function Home() {
                   <div className="text-white/60 line-through">R$ 119,90</div>
                 </div>
                 <Button
-                  onClick={() => {
-                    const links = getPaymentLinks("EAFC 26 - Times Brasileiros")
+                  onClick={async () => {
+                    const links = await getPaymentLinksWithRotation("EAFC 26 - Times Brasileiros")
                     openPaymentModal(links.pix, links.card, "EAFC 26 - Times Brasileiros")
                   }}
                   className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"
@@ -384,8 +384,8 @@ export default function Home() {
                   <div className="text-white/60 line-through">R$ 99,90</div>
                 </div>
                 <Button
-                  onClick={() => {
-                    const links = getPaymentLinks("EAFC 25 - Times Brasileiros Licenciados")
+                  onClick={async () => {
+                    const links = await getPaymentLinksWithRotation("EAFC 25 - Times Brasileiros Licenciados")
                     openPaymentModal(links.pix, links.card, "EAFC 25 - Times Brasileiros")
                   }}
                   className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"
@@ -419,8 +419,8 @@ export default function Home() {
                   <div className="text-white/60 line-through">R$ 159,90</div>
                 </div>
                 <Button
-                  onClick={() => {
-                    const links = getPaymentLinks("PATCH EAFC 25 + JOGO EAFC 25 - TIMES BRASILEIROS")
+                  onClick={async () => {
+                    const links = await getPaymentLinksWithRotation("PATCH EAFC 25 + JOGO EAFC 25 - TIMES BRASILEIROS")
                     openPaymentModal(links.pix, links.card, "PATCH EAFC 25 + JOGO EAFC 25")
                   }}
                   className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"
@@ -452,8 +452,8 @@ export default function Home() {
                   <div className="text-white/60 line-through">R$ 79,90</div>
                 </div>
                 <Button
-                  onClick={() => {
-                    const links = getPaymentLinks("EAFC 24 - Times Brasileiros Licenciados")
+                  onClick={async () => {
+                    const links = await getPaymentLinksWithRotation("EAFC 24 - Times Brasileiros Licenciados")
                     openPaymentModal(links.pix, links.card, "EAFC 24 - Times Brasileiros")
                   }}
                   className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"
@@ -485,8 +485,8 @@ export default function Home() {
                   <div className="text-white/60 line-through">R$ 119,90</div>
                 </div>
                 <Button
-                  onClick={() => {
-                    const links = getPaymentLinks("PES 2021 VERSÃO 25 + JOGO PES 21 - TIMES BRASILEIROS")
+                  onClick={async () => {
+                    const links = await getPaymentLinksWithRotation("PES 2021 VERSÃO 25 + JOGO PES 21 - TIMES BRASILEIROS")
                     openPaymentModal(links.pix, links.card, "PES 2021 VERSÃO 25 + JOGO PES 21")
                   }}
                   className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"
@@ -518,8 +518,8 @@ export default function Home() {
                   <div className="text-white/60 line-through">R$ 69,90</div>
                 </div>
                 <Button
-                  onClick={() => {
-                    const links = getPaymentLinks("PES 2021 VERSÃO 25 - TIMES BRASILEIROS")
+                  onClick={async () => {
+                    const links = await getPaymentLinksWithRotation("PES 2021 VERSÃO 25 - TIMES BRASILEIROS")
                     openPaymentModal(links.pix, links.card, "PES 2021 VERSÃO 25 - TIMES BRASILEIROS")
                   }}
                   className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"

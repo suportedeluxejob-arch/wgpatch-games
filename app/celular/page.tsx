@@ -7,7 +7,7 @@ import { Download, Star, Smartphone, Gamepad2, Users, Trophy, Shield, Zap } from
 import { Footer } from "@/components/footer"
 import { PaymentMethodModal } from "@/components/payment-method-modal"
 import { useState } from "react"
-import { getPaymentLinks } from "@/lib/payment-links"
+import { getPaymentLinks, getPaymentLinksWithRotation } from "@/lib/payment-links"
 
 export default function CelularPage() {
   const [paymentModal, setPaymentModal] = useState({
@@ -109,8 +109,8 @@ export default function CelularPage() {
 
                   <div className="flex gap-4 mb-8">
                     <Button
-                      onClick={() => {
-                        const links = getPaymentLinks("DFL 25 - TIMES BRASILEIROS CELULAR")
+                      onClick={async () => {
+                        const links = await getPaymentLinksWithRotation("DFL 25 - TIMES BRASILEIROS CELULAR")
                         openPaymentModal(links.pix, links.card, "DFL 25 - TIMES BRASILEIROS CELULAR")
                       }}
                       size="lg"
