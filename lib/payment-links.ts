@@ -45,7 +45,7 @@ export const PAYMENT_LINKS: Record<string, PaymentLink> = {
 
     // ==================== EAFC 24 ====================
     "EAFC 24 - Times Brasileiros Licenciados": {
-        pix: "https://go.invictuspay.app.br/kllijhnfgx",
+        pix: "https://go.invictuspay.app.br/sy8mfsqkby",
         card: "https://pay.cakto.com.br/337h6fv_638368",
     },
 
