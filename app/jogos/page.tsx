@@ -8,6 +8,7 @@ import { Footer } from "@/components/footer"
 import { PaymentMethodModal } from "@/components/payment-method-modal"
 import { useState } from "react"
 import Link from "next/link"
+import { getPaymentLinks } from "@/lib/payment-links"
 
 export default function JogosPage() {
   const [paymentModal, setPaymentModal] = useState({
@@ -37,8 +38,6 @@ export default function JogosPage() {
       rating: 5.0,
       downloads: "850",
       isNew: true,
-      pixLink: "https://go.invictuspay.app.br/3p65wtvjht",
-      cardLink: "https://pay.cakto.com.br/agtjpxf_638373",
     },
     {
       name: "EA SPORTS FC 25",
@@ -50,8 +49,6 @@ export default function JogosPage() {
       platforms: ["PS4", "PS5", "Xbox", "PC"],
       rating: 4.9,
       downloads: "3.2k",
-      pixLink: "https://go.invictuspay.app.br/rt0t2uecxd",
-      cardLink: "https://pay.cakto.com.br/39xfxuj_638367",
     },
     {
       name: "PES 2021 (eFootball)",
@@ -63,8 +60,6 @@ export default function JogosPage() {
       platforms: ["PS4", "PS5", "Xbox", "PC"],
       rating: 4.8,
       downloads: "5.7k",
-      pixLink: "https://go.invictuspay.app.br/ovmhlg21rh",
-      cardLink: "https://pay.cakto.com.br/3634a38_638395",
     },
   ]
 
@@ -147,7 +142,10 @@ export default function JogosPage() {
                     {game.originalPrice && <div className="text-white/60 line-through">{game.originalPrice}</div>}
                   </div>
                   <Button
-                    onClick={() => openPaymentModal(game.pixLink, game.cardLink, game.name)}
+                    onClick={() => {
+                      const links = getPaymentLinks(game.name)
+                      openPaymentModal(links.pix, links.card, game.name)
+                    }}
                     className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"
                   >
                     <Download className="mr-2 h-4 w-4" />

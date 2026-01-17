@@ -12,6 +12,7 @@ import Link from "next/link"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { ContactSection } from "@/components/contact-section"
 import { Logo } from "@/components/logo"
+import { getPaymentLinks } from "@/lib/payment-links"
 
 export default function Home() {
   const [paymentModal, setPaymentModal] = useState({
@@ -35,7 +36,7 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-blue-900 to-cyan-900">
       {/* Logo Section - Para alterar a logo, modifique o parâmetro imageUrl abaixo */}
       <section className="pt-20 pb-8 px-4 sm:px-6 lg:px-8">
-        <Logo 
+        <Logo
           imageUrl="https://iili.io/fv4Ka0G.jpg" // Altere aqui: use "/caminho/local.png" ou "https://url-externa.com/logo.png"
           size={120} // Tamanho em pixels (largura e altura)
           alt="WG Patch Logo"
@@ -48,7 +49,7 @@ export default function Home() {
           <Badge className="mb-4 sm:mb-6 bg-cyan-600/20 text-cyan-300 border-cyan-500/30 inline-block text-sm sm:text-base px-3 sm:px-4 py-2 sm:py-2.5">
             🎮 Patches Completos
           </Badge>
-          
+
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight animate-slide-up">
             Leve sua experiência no
             <span className="block sm:inline text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
@@ -57,12 +58,12 @@ export default function Home() {
             </span>
             a outro nível
           </h1>
-          
+
           <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8 sm:mb-10 max-w-3xl mx-auto leading-relaxed">
             Com o WG Patch Futebol, o patch mais completo e realista do mercado! Times brasileiros clássicos, jogadores
             lendários, ligas licenciadas e instalação remota.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Button
               asChild
@@ -216,11 +217,10 @@ export default function Home() {
                       <div className="grid grid-cols-2 gap-2 md:gap-3">
                         <button
                           onClick={() => setSelectedLicense("secundaria")}
-                          className={`p-3 md:p-4 rounded-lg border-2 transition-all ${
-                            selectedLicense === "secundaria"
-                              ? "border-cyan-500 bg-cyan-500/20 shadow-lg shadow-cyan-500/50"
-                              : "border-white/20 bg-white/5 hover:border-cyan-500/50"
-                          }`}
+                          className={`p-3 md:p-4 rounded-lg border-2 transition-all ${selectedLicense === "secundaria"
+                            ? "border-cyan-500 bg-cyan-500/20 shadow-lg shadow-cyan-500/50"
+                            : "border-white/20 bg-white/5 hover:border-cyan-500/50"
+                            }`}
                         >
                           <div className="text-center">
                             <p className="text-white font-bold text-sm md:text-lg mb-1">Secundária</p>
@@ -231,11 +231,10 @@ export default function Home() {
 
                         <button
                           onClick={() => setSelectedLicense("primaria")}
-                          className={`p-3 md:p-4 rounded-lg border-2 transition-all ${
-                            selectedLicense === "primaria"
-                              ? "border-purple-500 bg-purple-500/20 shadow-lg shadow-purple-500/50"
-                              : "border-white/20 bg-white/5 hover:border-purple-500/50"
-                          }`}
+                          className={`p-3 md:p-4 rounded-lg border-2 transition-all ${selectedLicense === "primaria"
+                            ? "border-purple-500 bg-purple-500/20 shadow-lg shadow-purple-500/50"
+                            : "border-white/20 bg-white/5 hover:border-purple-500/50"
+                            }`}
                         >
                           <div className="text-center">
                             <p className="text-white font-bold text-sm md:text-lg mb-1">Primária</p>
@@ -318,13 +317,10 @@ export default function Home() {
                   <div className="text-white/60 line-through">R$ 199,90</div>
                 </div>
                 <Button
-                  onClick={() =>
-                    openPaymentModal(
-                      "https://go.invictuspay.app.br/3p65wtvjht",
-                      "https://pay.cakto.com.br/agtjpxf_638373",
-                      "PATCH EAFC 26 + JOGO EAFC 26",
-                    )
-                  }
+                  onClick={() => {
+                    const links = getPaymentLinks("PATCH EAFC 26 + JOGO EAFC 26")
+                    openPaymentModal(links.pix, links.card, "PATCH EAFC 26 + JOGO EAFC 26")
+                  }}
                   className="w-full bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700"
                 >
                   <Download className="mr-2 h-4 w-4" />
@@ -355,13 +351,10 @@ export default function Home() {
                   <div className="text-white/60 line-through">R$ 119,90</div>
                 </div>
                 <Button
-                  onClick={() =>
-                    openPaymentModal(
-                      "https://go.invictuspay.app.br/qaatnpzass",
-                      "https://pay.cakto.com.br/5jgfx87_638363",
-                      "EAFC 26 - Times Brasileiros",
-                    )
-                  }
+                  onClick={() => {
+                    const links = getPaymentLinks("EAFC 26 - Times Brasileiros")
+                    openPaymentModal(links.pix, links.card, "EAFC 26 - Times Brasileiros")
+                  }}
                   className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"
                 >
                   <Download className="mr-2 h-4 w-4" />
@@ -391,13 +384,10 @@ export default function Home() {
                   <div className="text-white/60 line-through">R$ 99,90</div>
                 </div>
                 <Button
-                  onClick={() =>
-                    openPaymentModal(
-                      "https://go.invictuspay.app.br/fuv2ufja8l",
-                      "https://pay.cakto.com.br/39xfxuj_638367",
-                      "EAFC 25 - Times Brasileiros",
-                    )
-                  }
+                  onClick={() => {
+                    const links = getPaymentLinks("EAFC 25 - Times Brasileiros Licenciados")
+                    openPaymentModal(links.pix, links.card, "EAFC 25 - Times Brasileiros")
+                  }}
                   className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"
                 >
                   <Download className="mr-2 h-4 w-4" />
@@ -429,13 +419,10 @@ export default function Home() {
                   <div className="text-white/60 line-through">R$ 159,90</div>
                 </div>
                 <Button
-                  onClick={() =>
-                    openPaymentModal(
-                      "https://go.invictuspay.app.br/rt0t2uecxd",
-                      "https://pay.cakto.com.br/39xfxuj_638367",
-                      "PATCH EAFC 25 + JOGO EAFC 25",
-                    )
-                  }
+                  onClick={() => {
+                    const links = getPaymentLinks("PATCH EAFC 25 + JOGO EAFC 25 - TIMES BRASILEIROS")
+                    openPaymentModal(links.pix, links.card, "PATCH EAFC 25 + JOGO EAFC 25")
+                  }}
                   className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"
                 >
                   <Download className="mr-2 h-4 w-4" />
@@ -465,13 +452,10 @@ export default function Home() {
                   <div className="text-white/60 line-through">R$ 79,90</div>
                 </div>
                 <Button
-                  onClick={() =>
-                    openPaymentModal(
-                      "https://go.invictuspay.app.br/kllijhnfgx",
-                      "https://pay.cakto.com.br/337h6fv_638368",
-                      "EAFC 24 - Times Brasileiros",
-                    )
-                  }
+                  onClick={() => {
+                    const links = getPaymentLinks("EAFC 24 - Times Brasileiros Licenciados")
+                    openPaymentModal(links.pix, links.card, "EAFC 24 - Times Brasileiros")
+                  }}
                   className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"
                 >
                   <Download className="mr-2 h-4 w-4" />
@@ -501,13 +485,10 @@ export default function Home() {
                   <div className="text-white/60 line-through">R$ 119,90</div>
                 </div>
                 <Button
-                  onClick={() =>
-                    openPaymentModal(
-                      "https://go.invictuspay.app.br/ovmhlg21rh",
-                      "https://pay.cakto.com.br/3634a38_638395",
-                      "PES 2021 VERSÃO 25 + JOGO PES 21",
-                    )
-                  }
+                  onClick={() => {
+                    const links = getPaymentLinks("PES 2021 VERSÃO 25 + JOGO PES 21 - TIMES BRASILEIROS")
+                    openPaymentModal(links.pix, links.card, "PES 2021 VERSÃO 25 + JOGO PES 21")
+                  }}
                   className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"
                 >
                   <Download className="mr-2 h-4 w-4" />
@@ -537,13 +518,10 @@ export default function Home() {
                   <div className="text-white/60 line-through">R$ 69,90</div>
                 </div>
                 <Button
-                  onClick={() =>
-                    openPaymentModal(
-                      "https://go.invictuspay.app.br/qcgqeanwjc",
-                      "https://pay.cakto.com.br/8fekayj_638394",
-                      "PES 2021 VERSÃO 25 - TIMES BRASILEIROS",
-                    )
-                  }
+                  onClick={() => {
+                    const links = getPaymentLinks("PES 2021 VERSÃO 25 - TIMES BRASILEIROS")
+                    openPaymentModal(links.pix, links.card, "PES 2021 VERSÃO 25 - TIMES BRASILEIROS")
+                  }}
                   className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"
                 >
                   <Download className="mr-2 h-4 w-4" />
@@ -573,13 +551,10 @@ export default function Home() {
                   <div className="text-white/60 line-through">R$ 59,90</div>
                 </div>
                 <Button
-                  onClick={() =>
-                    openPaymentModal(
-                      "https://pay.cakto.com.br/xa54qtu_638427",
-                      "https://pay.cakto.com.br/xa54qtu_638427",
-                      "DFL 25 - TIMES BRASILEIROS CELULAR",
-                    )
-                  }
+                  onClick={() => {
+                    const links = getPaymentLinks("DFL 25 - TIMES BRASILEIROS CELULAR")
+                    openPaymentModal(links.pix, links.card, "DFL 25 - TIMES BRASILEIROS CELULAR")
+                  }}
                   className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"
                 >
                   <Download className="mr-2 h-4 w-4" />
@@ -607,13 +582,10 @@ export default function Home() {
                   <div className="text-2xl font-bold text-cyan-400">R$ 19,90</div>
                 </div>
                 <Button
-                  onClick={() =>
-                    openPaymentModal(
-                      "https://pay.cakto.com.br/xhxaq8h_638384",
-                      "https://pay.cakto.com.br/xhxaq8h_638384",
-                      "INSTALAÇÃO REMOTA",
-                    )
-                  }
+                  onClick={() => {
+                    const links = getPaymentLinks("PES 2021 V25 Patch")
+                    openPaymentModal(links.pix, links.card, "INSTALAÇÃO REMOTA")
+                  }}
                   className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"
                 >
                   <Download className="mr-2 h-4 w-4" />

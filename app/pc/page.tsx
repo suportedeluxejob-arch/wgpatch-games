@@ -8,6 +8,7 @@ import { Footer } from "@/components/footer"
 import { CountdownTimer } from "@/components/countdown-timer"
 import { PaymentMethodModal } from "@/components/payment-method-modal"
 import { useState } from "react"
+import { getPaymentLinks } from "@/lib/payment-links"
 
 export default function PCPage() {
   const [paymentModal, setPaymentModal] = useState({
@@ -241,41 +242,10 @@ export default function PCPage() {
                   </ul>
                   <div className="flex gap-2">
                     <Button
-                      onClick={() =>
-                        openPaymentModal(
-                          product.name === "PATCH EAFC 26 + JOGO EAFC 26"
-                            ? "https://go.invictuspay.app.br/3p65wtvjht"
-                            : product.name === "EAFC 26 - Times Brasileiros"
-                              ? "https://go.invictuspay.app.br/qaatnpzass"
-                              : product.name === "EAFC 25 - Times Brasileiros Licenciados"
-                                ? "https://go.invictuspay.app.br/fuv2ufja8l"
-                                : product.name === "PATCH EAFC 25 + JOGO EAFC 25 - TIMES BRASILEIROS"
-                                  ? "https://go.invictuspay.app.br/rt0t2uecxd"
-                                  : product.name === "EAFC 24 - Times Brasileiros Licenciados"
-                                    ? "https://go.invictuspay.app.br/kllijhnfgx"
-                                    : product.name === "PES 2021 VERSÃO 25 + JOGO PES 21 - TIMES BRASILEIROS"
-                                      ? "https://go.invictuspay.app.br/ovmhlg21rh"
-                                      : product.name === "PES 2021 VERSÃO 25 - TIMES BRASILEIROS"
-                                        ? "https://go.invictuspay.app.br/qcgqeanwjc"
-                                        : "#",
-                          product.name === "PATCH EAFC 26 + JOGO EAFC 26"
-                            ? "https://pay.cakto.com.br/agtjpxf_638373"
-                            : product.name === "EAFC 26 - Times Brasileiros"
-                              ? "https://pay.cakto.com.br/5jgfx87_638363"
-                              : product.name === "EAFC 25 - Times Brasileiros Licenciados"
-                                ? "https://pay.cakto.com.br/39xfxuj_638367"
-                                : product.name === "PATCH EAFC 25 + JOGO EAFC 25 - TIMES BRASILEIROS"
-                                  ? "https://pay.cakto.com.br/39xfxuj_638367"
-                                  : product.name === "EAFC 24 - Times Brasileiros Licenciados"
-                                    ? "https://pay.cakto.com.br/337h6fv_638368"
-                                    : product.name === "PES 2021 VERSÃO 25 + JOGO PES 21 - TIMES BRASILEIROS"
-                                      ? "https://pay.cakto.com.br/3634a38_638395"
-                                      : product.name === "PES 2021 VERSÃO 25 - TIMES BRASILEIROS"
-                                        ? "https://pay.cakto.com.br/8fekayj_638394"
-                                        : "#",
-                          product.name,
-                        )
-                      }
+                      onClick={() => {
+                        const links = getPaymentLinks(product.name)
+                        openPaymentModal(links.pix, links.card, product.name)
+                      }}
                       className="flex-1 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600"
                     >
                       <Download className="mr-2 h-4 w-4" />

@@ -7,6 +7,7 @@ import { Download, Star, Smartphone, Gamepad2, Users, Trophy, Shield, Zap } from
 import { Footer } from "@/components/footer"
 import { PaymentMethodModal } from "@/components/payment-method-modal"
 import { useState } from "react"
+import { getPaymentLinks } from "@/lib/payment-links"
 
 export default function CelularPage() {
   const [paymentModal, setPaymentModal] = useState({
@@ -108,13 +109,10 @@ export default function CelularPage() {
 
                   <div className="flex gap-4 mb-8">
                     <Button
-                      onClick={() =>
-                        openPaymentModal(
-                          "https://pay.cakto.com.br/xa54qtu_638427",
-                          "https://pay.cakto.com.br/xa54qtu_638427",
-                          "DFL 25 - TIMES BRASILEIROS CELULAR",
-                        )
-                      }
+                      onClick={() => {
+                        const links = getPaymentLinks("DFL 25 - TIMES BRASILEIROS CELULAR")
+                        openPaymentModal(links.pix, links.card, "DFL 25 - TIMES BRASILEIROS CELULAR")
+                      }}
                       size="lg"
                       className="flex-1 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-lg py-6"
                     >
@@ -287,13 +285,10 @@ export default function CelularPage() {
               </div>
 
               <Button
-                onClick={() =>
-                  openPaymentModal(
-                    "https://pay.cakto.com.br/xa54qtu_638427",
-                    "https://pay.cakto.com.br/xa54qtu_638427",
-                    "DFL 25 - TIMES BRASILEIROS CELULAR",
-                  )
-                }
+                onClick={() => {
+                  const links = getPaymentLinks("DFL 25 - TIMES BRASILEIROS CELULAR")
+                  openPaymentModal(links.pix, links.card, "DFL 25 - TIMES BRASILEIROS CELULAR")
+                }}
                 size="lg"
                 className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-xl px-12 py-6"
               >
